@@ -5,7 +5,7 @@
 
 OPETIA overview
 ====================
-Welcome to the **OPETIA** (Odense-Oxford PET Image Analysis) documentation!
+Welcome to the **OPETIA (Odense-Oxford PET Image Analysis)** documentation!
 
 Here you can find information about the OPETIA project, its features, and how to use it effectively.
 The source code for OPETIA is available on `GitHub <https://github.com/taha-parsayan/OPETIA>`_.

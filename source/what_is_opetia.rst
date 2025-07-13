@@ -12,7 +12,7 @@ What is OPETIA?
 
 Advanced Magnetic Resonance Imaging (MRI) and Positron Emission Tomography (PET) analysis provide precise information on brain structure and function for diagnosis and treatment. However, most clinical software lacks accurate quantification, is complicated to use, or does not provide PET image analysis. **FSL** is a widely used toolbox which provides comprehensive functions for the analysis of MRI images, but it lacks functions for the analysis of PET images.
 
-Therefore, we developed **OPETIA (Odense-Oxford PET Image Analysis)**, a user-friendly toolbox based on FSL and Python, which automates multimodal neuroimage preprocessing and calculates SUV, SUVR, and cerebral volume in regions of interest (ROI). We validated OPETIA using FDG PET and MRI data from healthy controls and Alzheimer’s patients in the ADNI dataset, comparing results with SPM12.
+Therefore, we developed **OPETIA (Odense-Oxford PET Image Analysis)**, a user-friendly toolbox based on FSL and Python, which automates multimodal neuroimage pre-processing and calculates SUV, SUVR, and cerebral volume in regions of interest (ROI). We validated OPETIA using FDG PET and MRI data from healthy controls and Alzheimer’s patients in the ADNI dataset, comparing results with SPM12.
 
 **OPETIA provides:**
 
