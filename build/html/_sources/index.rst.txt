@@ -29,4 +29,5 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
    :caption: Contents:
 
    what_is_opetia
-
+   Installation_ubuntu
+   Installation_macOS
