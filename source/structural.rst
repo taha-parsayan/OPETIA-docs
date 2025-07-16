@@ -32,6 +32,8 @@ From OPETIA, run the ``Structural pre-processing`` tool.
 
 All needed to be done is to input the path to the folder containing the T1-weighted MRI image (data/subject1) and click on ``Process``. All the parameters will be set automatically.
 
+**3. Output files:**
+
 All the **outputs** will be saved in the folder ``data/subject1/OPETIA_output`` (automatically created). These include:
 
 - ``structural_brain_std.nii.gz``: The skull-stripped T1-weighted MRI image in the MNI-152 space.
@@ -40,7 +42,7 @@ All the **outputs** will be saved in the folder ``data/subject1/OPETIA_output`` 
 - ``fast_pve_1.nii.gz``: GM (Cortex)
 - ``fast_pve_2.nii.gz``: WM
 
-**3. Quality Control:**
+**4. Quality Control:**
 
 By pressing the ``Show processed image`` button, an image will appear containing the MNI-152 template on the background and the pre-processes T1 image as an overlay. The user can visually inspect the quality of the pre-processed image.
 
@@ -52,3 +54,19 @@ By pressing the ``Show processed image`` button, an image will appear containing
 .. raw:: html
 
        <br><br>
+
+**5. Advanced Options:**
+
+*Brain extraction:*
+
+- ``Fractional intensity threshold``: The threshold (-f) for the brain extraction. The default value is 0.5, and it ranges between 0 and 1. The smaller the value, the larger the brain mask. If 0.5 leads to not missing some brain parts, try smaller values such as 0.4 or 0.3.
+- ``Vertical gradient``: The vertical gradient (-g) for the brain extraction. The default value is 0. and it ranges between -1 and 1. Negative values (such as -0.2) includes more brain tissuesat the top (superior). Positive values (such as 0.2) includes more brain tissues at the bottom (inferior).
+
+*Registration (native structural space to tandard space):*
+
+- ``Standard template``: This is the standard template to which the native structural image will be registered. The default value is ``MNI152_T1_2mm_brain.nii.gz``. You can change it to any other template, such as ``MNI152_T1_1mm_brain.nii.gz``. The template is located at ``OPETIA/Templates``.
+
+.. admonition:: Note
+    
+    You need to be careful with changing the standard space template. OPETIA provides tools that segments the brain into ROIs and extracts features from these regions. The ROIs incorporated in OPETIA are in the MNI152 2mm space. If you change the template to a different one, you need to make sure that the ROIs are also in the same space by modifying the files and images.
+
