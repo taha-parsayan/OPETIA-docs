@@ -34,6 +34,10 @@ From OPETIA, run the ``Structural image pre-processing`` tool.
 
 All needed to be done is to input the path to the folder containing the T1-weighted MRI image (data/subject1) and click on ``Process``. All the parameters will be set automatically.
 
+.. admonition:: Note
+
+   The Terminal prints the log of the pre-processing. If there are any errors, you can read about them in the Terminal.
+
 **3. Output files:**
 
 All the **outputs** will be saved in the folder ``data/subject1/OPETIA_output`` (automatically created). These include:

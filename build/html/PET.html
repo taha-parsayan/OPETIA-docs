@@ -86,7 +86,10 @@
 </ul>
 <p><em>Pre-processing steps:</em></p>
 <ul class="simple">
-<li><p>Skull stripping (brain extraction)</p></li>
+<li><p>Skull stripping of all PET vols (brain extraction)</p></li>
+<li><p>Co-registration of the first PET vol to the native T1 space (6 degrees of freedom)</p></li>
+<li><p>Co-registration of the remaining PET vols to the results of previous stage (6 degrees of freedom)</p></li>
+<li><p>Summing all resulting vols to create a static PET image</p></li>
 <li><p>Co-registration from native PET to native T1 space (6 degrees of freedom)</p></li>
 <li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
 <li><p>Smoothing to increase the signal-to-noise ratio (optional but recommended)</p></li>
@@ -97,7 +100,44 @@
 <p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">image</span> <span class="pre">pre-processing</span></code> tool.</p>
 <a class="reference internal image-reference" href="_images/OPETIA_PET.png"><img alt="Image" class="align-center" src="_images/OPETIA_PET.png" style="width: 400px;" />
 </a>
-<br><br></section>
+<br><br><p>All needed to be done is to input the path to the folder containing the PET volumes (data/subject1), preferably check the <code class="docutils literal notranslate"><span class="pre">Smooth</span> <span class="pre">the</span> <span class="pre">PET</span> <span class="pre">image</span></code> option, and click on <code class="docutils literal notranslate"><span class="pre">Process</span></code>. All the parameters will be set automatically.</p>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>The Terminal prints the log of the pre-processing. If there are any errors, you can read about them in the Terminal.</p>
+</div>
+<p><strong>3. Output files:</strong></p>
+<p>All the <strong>outputs</strong> will be saved in the folder <code class="docutils literal notranslate"><span class="pre">data/subject1/OPETIA_output</span></code> (automatically created). These include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PET_brain_std.nii.gz</span></code>: The static skull-stripped PET image in the MNI-152 space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET_brain.nii.gz</span></code>: The static skull-stripped PET image, co-registered to the native T1 space.</p></li>
+</ul>
+<p><strong>4. Quality Control:</strong></p>
+<p>By pressing the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">processed</span> <span class="pre">image</span></code> button, an image will appear containing the MNI-152 template on the background and the pre-processes T1 image as an overlay. The user can visually inspect the quality of the pre-processed image.</p>
+<a class="reference internal image-reference" href="_images/PET_QC.png"><img alt="Image" class="align-center" src="_images/PET_QC.png" style="width: 800px;" />
+</a>
+<br><br><p><strong>5. Advanced Options:</strong></p>
+<p><em>Brain extraction:</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Fractional</span> <span class="pre">intensity</span> <span class="pre">threshold</span></code>: The threshold (-f) for the brain extraction. The default value is 0.5, and it ranges between 0 and 1. The smaller the value, the larger the brain mask. If 0.5 leads to not missing some brain parts, try smaller values such as 0.4 or 0.3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vertical</span> <span class="pre">gradient</span></code>: The vertical gradient (-g) for the brain extraction. The default value is 0. and it ranges between -1 and 1. Negative values (such as -0.2) includes more brain tissuesat the top (superior). Positive values (such as 0.2) includes more brain tissues at the bottom (inferior).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Function/modality</span></code>: The modality for brain extraction. By default, <code class="docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">brain</span> <span class="pre">extraction</span> <span class="pre">using</span> <span class="pre">bet2</span></code> is selected. If the image contains nech and face, use the <code class="docutils literal notranslate"><span class="pre">Biasfield</span> <span class="pre">and</span> <span class="pre">nech</span> <span class="pre">cleanup</span></code> option. It might take a longer time to extract the brain compared to bet2.</p></li>
+</ul>
+<p><em>Registration (native structural space to tandard space):</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Brain</span> <span class="pre">extracted</span> <span class="pre">T1</span> <span class="pre">in</span> <span class="pre">native</span> <span class="pre">space</span></code>: This image is the result of the analysis of MRI image using OPETIA. The software automatically detects the file path for the co-registration of PET to T1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">template</span></code>: This is the standard template to which the native structural image will be registered. The default value is <code class="docutils literal notranslate"><span class="pre">MNI152_T1_2mm_brain.nii.gz</span></code>. You can change it to any other template, such as <code class="docutils literal notranslate"><span class="pre">MNI152_T1_1mm_brain.nii.gz</span></code>. The template is located at <code class="docutils literal notranslate"><span class="pre">OPETIA/Templates</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">to</span> <span class="pre">T1</span> <span class="pre">registration</span> <span class="pre">model</span></code>: degrees of freedom for the co-registration of PET to T1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">to</span> <span class="pre">T1</span> <span class="pre">cost</span> <span class="pre">function</span></code>: The cost function for the co-registration of PET to T1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">to</span> <span class="pre">T1</span> <span class="pre">interpolation</span> <span class="pre">method</span></code>: The interpolation method for the co-registration of PET to T1.</p></li>
+</ul>
+<p><em>Increase image signal to noise ratio</em>:
+- <code class="docutils literal notranslate"><span class="pre">Smooth</span> <span class="pre">the</span> <span class="pre">PET</span> <span class="pre">image</span></code>: Option to smooth the PET image using a default value of 5mm FWHM (recommended).
+- <code class="docutils literal notranslate"><span class="pre">Threshold</span> <span class="pre">the</span> <span class="pre">image</span></code>: Option to thrshold the PET image to remove unnecesary image boundries.</p>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>You need to be careful with changing the standard space template. OPETIA provides tools that segments the brain into ROIs and extracts features from these regions. The ROIs incorporated in OPETIA are in the MNI152 2mm space. If you change the template to a different one, you need to make sure that the ROIs are also in the same space by modifying the files and images.</p>
+</div>
+</section>
 
 
            </div>
