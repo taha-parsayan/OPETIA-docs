@@ -25,7 +25,7 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
    :align: center
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: Contents:
 
    what_is_opetia
