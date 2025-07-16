@@ -34,3 +34,4 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
    nifti_manager
    structural
    PET
+   ROI
