@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Making the data ready &mdash; OPETIA  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MRI Image Analysis" href="structural.html" />
+    <link rel="prev" title="Installation on macOS" href="installation_macOS.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OPETIA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="what_is_opetia.html">What is OPETIA?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_ubuntu.html">Installation on Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_macOS.html">Installation on macOS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Making the data ready</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structural.html">MRI Image Analysis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OPETIA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Making the data ready</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/nifti_manager.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="making-the-data-ready">
+<h1>Making the data ready<a class="headerlink" href="#making-the-data-ready" title="Link to this heading"></a></h1>
+<p><strong>1. Overview:</strong></p>
+<p>Before using OPETIA, it is essential to prepare your data correctly. This involves ensuring that your MRI images are in the NIfTI format and that they are organized in a way that OPETIA can process them effectively.</p>
+<p>If your MRI images are in DICOM format, there are several ways to convert them to NIfTI format. However, it is suggested to use the <code class="docutils literal notranslate"><span class="pre">MRIcroGL</span></code> software combined with the <code class="docutils literal notranslate"><span class="pre">OPETIA:</span> <span class="pre">NIFTI</span> <span class="pre">Organizer</span></code> tool. <code class="docutils literal notranslate"><span class="pre">MRIcroGL</span></code> provides tools for the conversion, and <code class="docutils literal notranslate"><span class="pre">NIFTI</span> <span class="pre">organizer</span></code> helps to put all the converted images into their corresponding subject folder and renaming them to T1.nii.gz and PET.nii.gz. In case of dynamic PET, the <code class="docutils literal notranslate"><span class="pre">NIFTI</span> <span class="pre">organizer</span></code> splits all the volumes and saves them in separate image files. The whole process in OPETIA is fully automated. At the end, OPETIA reports if some of the files could not be relocated, renamed, or splitted.</p>
+<p>Your files need to look like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/path/to/data/
+├── subject1/
+│   ├── folder containing DICOM files of MRI
+│   └── folder containing DICOM files of PET
+├── subject2/
+│   ├── folder containing DICOM files of MRI
+│   └── folder containing DICOM files of PET
+└── subject3/
+    ├── folder containing DICOM files of MRI
+    └── folder containing DICOM files of PET
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>It is not essential that the DICOM files are immediately in the folder. They can be in subfolders as well, as long as all the DICOM files are in the same folder.</p></li>
+<li><p>The folder names can be anything, and there is no need to rename the folders to MRI and PET. The folder names should not contain any special characters or spaces to avoid issues during processing.</p></li>
+</ol>
+</div>
+<p><strong>2. Converting DICOM to NIfTI:</strong></p>
+<p>MRIcroGL is available for download from its official website:</p>
+<p><a class="reference external" href="https://www.nitrc.org/projects/mricrogl">MRIcroGM for Ubuntu and macOS</a></p>
+<a class="reference internal image-reference" href="_images/MRIcroGL_main.png"><img alt="Image" class="align-center" src="_images/MRIcroGL_main.png" style="width: 400px;" />
+</a>
+<br><br><p>Once the software is installed, go to <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">&gt;</span> <span class="pre">Convert</span> <span class="pre">DICOM</span> <span class="pre">to</span> <span class="pre">NIfTI</span></code>. In the new window, set the parameters as follows:</p>
+<ul class="simple">
+<li><p>Output Filename: <code class="docutils literal notranslate"><span class="pre">%i_%p_%d_%z</span></code></p></li>
+<li><p>Output Directory: <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">NIfTI</span> <span class="pre">image</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">folder</span> <span class="pre">as</span> <span class="pre">DICOM</span></code></p></li>
+<li><p>Output Format: <code class="docutils literal notranslate"><span class="pre">Compressed</span> <span class="pre">NIfTI</span> <span class="pre">(.nii.gz)</span></code></p></li>
+<li><p>Create BIDS sidecar: <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p>Advanced: <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">uncheck</span></code></p></li>
+</ul>
+<p>After setting the parameters, click on <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">folder</span> <span class="pre">to</span> <span class="pre">convert</span></code> and <strong>select the parent folder containing all subject folders (/data)</strong>. Therefore, all the DICOM files will convert into NIfTI files and saved all together in the data folder.</p>
+<p>Now we need to put the images in their subject folders and organize them.</p>
+<p><strong>3. NIFTI organizer</strong></p>
+<p>From OPETIA, open the <code class="docutils literal notranslate"><span class="pre">NIFTI</span> <span class="pre">organizer</span></code> tool.</p>
+<a class="reference internal image-reference" href="_images/NIFTI_organizer.png"><img alt="Image" class="align-center" src="_images/NIFTI_organizer.png" style="width: 400px;" />
+</a>
+<br><br><p>Click on <code class="docutils literal notranslate"><span class="pre">Browse</span></code> and select the <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder containing the subject folders and the converted NIfTI images. After clicking on the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">processing</span></code>, OPETIA will:</p>
+<ul class="simple">
+<li><p>Put all the NIfTI images into their corresponding subject folder.</p></li>
+<li><p>Rename the image files into <code class="docutils literal notranslate"><span class="pre">T1.nii.gz</span></code> and <code class="docutils literal notranslate"><span class="pre">PET_Dynamic.nii.gz</span></code>.</p></li>
+<li><p>Split the dynamic PET images into separate image files as vol0000.nii.gz, vol0001.nii.gz, etc.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/path/to/data/
+├── subject1/
+│   ├── folder containing DICOM files of MRI
+│   └── folder containing DICOM files of PET
+│   └── T1.nii.gz
+│   └── PET_Dynamic.nii.gz
+│   └── vol0000.nii.gz
+│   └── vol0001.nii.gz
+│   └── vol0002.nii.gz
+│   └── vol0003.nii.gz
+</pre></div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>The Terminal shows a log of all the stages of OPETIA data processing.</p></li>
+<li><p>If some of the files cannot be relocated or renamed, a list of thse files will be provided in the Terminal. You need to manually organize these files.</p></li>
+<li><p>By selecting the <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">subject</span> <span class="pre">folders</span> <span class="pre">that</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">checked</span></code>, folders containing the files that need to be manually organized will be opened so that you can more easily organize them.</p></li>
+</ol>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation_macOS.html" class="btn btn-neutral float-left" title="Installation on macOS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structural.html" class="btn btn-neutral float-right" title="MRI Image Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Taha Parsayan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
