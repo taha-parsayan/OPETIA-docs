@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What is OPETIA? &mdash; OPETIA  documentation</title>
+  <title>PET Image Analysis &mdash; OPETIA  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation on Ubuntu" href="installation_ubuntu.html" />
-    <link rel="prev" title="OPETIA overview" href="index.html" /> 
+    <link rel="prev" title="MRI Image Analysis" href="structural.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,12 +43,12 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">What is OPETIA?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what_is_opetia.html">What is OPETIA?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation_ubuntu.html">Installation on Ubuntu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation_macOS.html">Installation on macOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nifti_manager.html">Making the data ready</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structural.html">MRI Image Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PET.html">PET Image Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PET Image Analysis</a></li>
 </ul>
 
         </div>
@@ -66,9 +65,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">What is OPETIA?</li>
+      <li class="breadcrumb-item active">PET Image Analysis</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/what_is_opetia.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/PET.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,42 +75,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="what-is-opetia">
-<h1>What is OPETIA?<a class="headerlink" href="#what-is-opetia" title="Link to this heading"></a></h1>
-<a class="reference internal image-reference" href="_images/OPETIA_all.png"><img alt="OPETIA Interface" class="align-center" src="_images/OPETIA_all.png" style="width: 600px;" />
+  <section id="pet-image-analysis">
+<h1>PET Image Analysis<a class="headerlink" href="#pet-image-analysis" title="Link to this heading"></a></h1>
+<p><strong>1. Overview:</strong></p>
+<p>OPETIA provides a user-friendly interface for the pre-processing of dynamic/static PET images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.</p>
+<p>Since most PET images are dynamic and contain several volumes, OPETIA by default considers the input image dynamic. However, OPETIA automatically detects the number of volumes in the image. In case of static PET image, OPETIA automatically implements functions for static PET images.</p>
+<p><em>Input data:</em></p>
+<ul class="simple">
+<li><p>PET volumes (vol0000.nii.gz, vol0001.nii.gz, etc)</p></li>
+</ul>
+<p><em>Pre-processing steps:</em></p>
+<ul class="simple">
+<li><p>Skull stripping (brain extraction)</p></li>
+<li><p>Co-registration from native PET to native T1 space (6 degrees of freedom)</p></li>
+<li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
+<li><p>Smoothing to increase the signal-to-noise ratio (optional but recommended)</p></li>
+<li><p>Applying a threshold to remove unnecessary tissue boundries (optional)</p></li>
+<li><p>Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) segmentation</p></li>
+</ul>
+<p><strong>2. Running the PET Pre-processing:</strong></p>
+<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">image</span> <span class="pre">pre-processing</span></code> tool.</p>
+<a class="reference internal image-reference" href="_images/OPETIA_PET.png"><img alt="Image" class="align-center" src="_images/OPETIA_PET.png" style="width: 400px;" />
 </a>
-<br><br><p>Advanced Magnetic Resonance Imaging (MRI) and Positron Emission Tomography (PET) analysis provide precise information on brain structure and function for diagnosis and treatment. However, most clinical software lacks accurate quantification, is complicated to use, or does not provide PET image analysis. <strong>FSL</strong> is a widely used toolbox which provides comprehensive functions for the analysis of MRI images, but it lacks functions for the analysis of PET images.</p>
-<p>Therefore, we developed <strong>OPETIA (Odense-Oxford PET Image Analysis)</strong>, a user-friendly toolbox based on FSL and Python, which automates multimodal neuroimage pre-processing and calculates SUV, SUVR, and cerebral volume in regions of interest (ROI). We validated OPETIA using FDG PET and MRI data from healthy controls and Alzheimer’s patients in the ADNI dataset, comparing results with SPM12.</p>
-<p><strong>OPETIA provides:</strong></p>
-<ul class="simple">
-<li><p>A user-friendly interface for multimodal neuroimage preprocessing where all parameters are set automatically, therefore you are not required to have any technical or image analysis knowledge.</p></li>
-<li><p>Automatic relocation of the DICOM-to-NIfTI converted images to the subject’s folders and renaming them to T1 and PET.</p></li>
-<li><p>Automatic pre-processing of the MRI images.</p></li>
-<li><p>Automatic pre-processing of statisc/dynamic PET images (dynamic PET images are converted to static PET in the T1 space).</p></li>
-<li><p>Automatic identification of 115 ROIs according to the Harvard-Oxford brain atlas.</p></li>
-<li><p>Automatic calculation of SUV, SUVR, and cerebral volume in the ROIs.</p></li>
-</ul>
-<hr class="docutils" />
-<p><strong>Input Data:</strong></p>
-<ul class="simple">
-<li><p>Static/dynamic PET image</p></li>
-<li><p>T1-weighted MRI image</p></li>
-</ul>
-<p><strong>Output Data:</strong></p>
-<ul class="simple">
-<li><p>Separate images for each ROI according to the Harvard-Oxford brain atlas (115 ROIs)</p></li>
-<li><p>Standardized Uptake Value (SUV) for 115 ROIs: mean, min, max, SD</p></li>
-<li><p>Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max, SD</p></li>
-<li><p>Cerebral Volume for 115 ROIs</p></li>
-</ul>
-</section>
+<br><br></section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="OPETIA overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="installation_ubuntu.html" class="btn btn-neutral float-right" title="Installation on Ubuntu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="structural.html" class="btn btn-neutral float-left" title="MRI Image Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

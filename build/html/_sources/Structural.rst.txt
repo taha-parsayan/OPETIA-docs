@@ -5,21 +5,23 @@ MRI Image Analysis
 
 OPETIA provides a user-friendly interface for the pre-processing of T1-weighted MRI images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.
 
-Input data: T1-weighted MRI (T1.nii.gz)
+*Input data:*
 
-Pre-processing steps:
+- T1-weighted MRI (T1.nii.gz)
+
+*Pre-processing steps:*
 
 - Skull stripping (brain extraction)
-- Non-linear registration to the MNI-152 template (2x2x2mm voxel size)
+- Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by >12 degrees of freedom)
 - Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) segmentation
 
 .. admonition:: Note
 
     In the `OPETIA paper <https://www.sciencedirect.com/science/article/pii/S1053811925002812>`_, registration to the MNI-152 template is done using a linear method. However, this has been changed to non-linear registration in the current version of OPETIA.
 
-**2. Running the Structural Pre-processing:**
+**2. Running the Structural image Pre-processing:**
 
-From OPETIA, run the ``Structural pre-processing`` tool.
+From OPETIA, run the ``Structural image pre-processing`` tool.
 
 .. image:: images/OPETIA_MRI.png
    :alt:  Image
@@ -61,6 +63,7 @@ By pressing the ``Show processed image`` button, an image will appear containing
 
 - ``Fractional intensity threshold``: The threshold (-f) for the brain extraction. The default value is 0.5, and it ranges between 0 and 1. The smaller the value, the larger the brain mask. If 0.5 leads to not missing some brain parts, try smaller values such as 0.4 or 0.3.
 - ``Vertical gradient``: The vertical gradient (-g) for the brain extraction. The default value is 0. and it ranges between -1 and 1. Negative values (such as -0.2) includes more brain tissuesat the top (superior). Positive values (such as 0.2) includes more brain tissues at the bottom (inferior).
+- ``Function/modality``: The modality for brain extraction. By default, ``Standard brain extraction using bet2`` is selected. If the image contains nech and face, use the ``Biasfield and nech cleanup`` option. It might take a longer time to extract the brain compared to bet2.
 
 *Registration (native structural space to tandard space):*
 

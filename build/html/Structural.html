@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PET Image Analysis" href="PET.html" />
     <link rel="prev" title="Making the data ready" href="nifti_manager.html" /> 
 </head>
 
@@ -48,6 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation_macOS.html">Installation on macOS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nifti_manager.html">Making the data ready</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MRI Image Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PET.html">PET Image Analysis</a></li>
 </ul>
 
         </div>
@@ -78,19 +80,22 @@
 <h1>MRI Image Analysis<a class="headerlink" href="#mri-image-analysis" title="Link to this heading"></a></h1>
 <p><strong>1. Overview:</strong></p>
 <p>OPETIA provides a user-friendly interface for the pre-processing of T1-weighted MRI images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.</p>
-<p>Input data: T1-weighted MRI (T1.nii.gz)</p>
-<p>Pre-processing steps:</p>
+<p><em>Input data:</em></p>
+<ul class="simple">
+<li><p>T1-weighted MRI (T1.nii.gz)</p></li>
+</ul>
+<p><em>Pre-processing steps:</em></p>
 <ul class="simple">
 <li><p>Skull stripping (brain extraction)</p></li>
-<li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)</p></li>
+<li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
 <li><p>Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) segmentation</p></li>
 </ul>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
 <p>In the <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811925002812">OPETIA paper</a>, registration to the MNI-152 template is done using a linear method. However, this has been changed to non-linear registration in the current version of OPETIA.</p>
 </div>
-<p><strong>2. Running the Structural Pre-processing:</strong></p>
-<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">Structural</span> <span class="pre">pre-processing</span></code> tool.</p>
+<p><strong>2. Running the Structural image Pre-processing:</strong></p>
+<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">Structural</span> <span class="pre">image</span> <span class="pre">pre-processing</span></code> tool.</p>
 <a class="reference internal image-reference" href="_images/OPETIA_MRI.png"><img alt="Image" class="align-center" src="_images/OPETIA_MRI.png" style="width: 400px;" />
 </a>
 <br><br><p>All needed to be done is to input the path to the folder containing the T1-weighted MRI image (data/subject1) and click on <code class="docutils literal notranslate"><span class="pre">Process</span></code>. All the parameters will be set automatically.</p>
@@ -112,6 +117,7 @@
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Fractional</span> <span class="pre">intensity</span> <span class="pre">threshold</span></code>: The threshold (-f) for the brain extraction. The default value is 0.5, and it ranges between 0 and 1. The smaller the value, the larger the brain mask. If 0.5 leads to not missing some brain parts, try smaller values such as 0.4 or 0.3.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Vertical</span> <span class="pre">gradient</span></code>: The vertical gradient (-g) for the brain extraction. The default value is 0. and it ranges between -1 and 1. Negative values (such as -0.2) includes more brain tissuesat the top (superior). Positive values (such as 0.2) includes more brain tissues at the bottom (inferior).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Function/modality</span></code>: The modality for brain extraction. By default, <code class="docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">brain</span> <span class="pre">extraction</span> <span class="pre">using</span> <span class="pre">bet2</span></code> is selected. If the image contains nech and face, use the <code class="docutils literal notranslate"><span class="pre">Biasfield</span> <span class="pre">and</span> <span class="pre">nech</span> <span class="pre">cleanup</span></code> option. It might take a longer time to extract the brain compared to bet2.</p></li>
 </ul>
 <p><em>Registration (native structural space to tandard space):</em></p>
 <ul class="simple">
@@ -128,6 +134,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="nifti_manager.html" class="btn btn-neutral float-left" title="Making the data ready" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="PET.html" class="btn btn-neutral float-right" title="PET Image Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

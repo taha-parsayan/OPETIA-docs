@@ -33,3 +33,4 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
    installation_macOS
    nifti_manager
    structural
+   PET
