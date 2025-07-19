@@ -24,6 +24,11 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
    :width: 300px
    :align: center
 
+**Where to get help?**
+
+- Check out this webpage: `Taha Parsayan <https://taha-parsayan.crd.co/>`_
+- Kindly send your questions, suggestions, and issues to me via parsayan.t@gmail.com
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
