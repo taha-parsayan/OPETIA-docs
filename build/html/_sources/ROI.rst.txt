@@ -5,6 +5,7 @@ Feature extraction
 
 OPETIA provides a user-friendly interface for the quantification of the PET and MRI images and feature extraction. The software segments the bain into 115 ROIs (96 cortical and 19 subcortical ROIs) and extracts image features from each ROI.
 
+
 *Input:*
 
 - Folder containing the results of MRI and PET pre-processing (data/subject1/OPETIA_output)
