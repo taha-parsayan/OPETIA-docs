@@ -7,15 +7,15 @@ OPETIA provides a user-friendly interface for the pre-processing of dynamic/stat
 
 Since most PET images are dynamic and contain several volumes, OPETIA by default considers the input image dynamic. However, OPETIA automatically detects the number of volumes in the image. In case of static PET image, OPETIA automatically implements functions for static PET images.
 
+.. admonition:: Note
+   
+   1. A dynamic PET image is a single PET.nii.gz with several volumes. A static PET image is a single PET.nii.gz with one volume.
+
+   2. PET image processing requires a T1-weighted MRI image processed by OPETIA.
+
 *Input data:*
 
 - PET volumes (PET.nii.gz)
-
-.. admonition:: Note
-   
-   A dynamic PET image is a single PET.nii.gz with several volumes. 
-   
-   A static PET image is a single PET.nii.gz with one volume.
 
 *Pre-processing steps:*
 

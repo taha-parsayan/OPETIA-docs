@@ -79,50 +79,58 @@
 <h1>Feature extraction<a class="headerlink" href="#feature-extraction" title="Link to this heading"></a></h1>
 <p><strong>1. Overview:</strong></p>
 <p>OPETIA provides a user-friendly interface for the quantification of the PET and MRI images and feature extraction. The software segments the bain into 115 ROIs (96 cortical and 19 subcortical ROIs) and extracts image features from each ROI.</p>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>If your data does not contain PET images, OPETIA allows to extraction of MRI images features alone.
+However, PET feature extraction requires a T1-weighted MRI image processed by OPETIA.</p>
+</div>
 <p><em>Input:</em></p>
 <ul class="simple">
 <li><p>Folder containing the results of MRI and PET pre-processing (data/subject1/OPETIA_output)</p></li>
 </ul>
 <p><em>Outputs:</em></p>
+<p>All the outputs will be saved in <code class="docutils literal notranslate"><span class="pre">data/subject1/OPETIA_output/ROI_analysis</span></code> and they include:</p>
 <ul class="simple">
 <li><p>Images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas)</p></li>
 <li><p>Images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas)</p></li>
 <li><p>Cerebral volume measurement (mm3) from each ROI</p></li>
-<li><p>Standardized Uptake Value (SUV) from each ROI (mean, min, max, SD)</p></li>
-<li><p>Standardized Uptake Value Ratio (SUVR) from each ROI (mean, min, max, SD)</p></li>
+<li><p>Standardized Uptake Value Ratio (SUVR) from each ROI (mean, min, max)</p></li>
 </ul>
 <p><strong>2. Running the ROI analysis:</strong></p>
-<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">analysis</span></code> tool.</p>
-<a class="reference internal image-reference" href="_images/OPETIA_ROI.png"><img alt="Image" class="align-center" src="_images/OPETIA_ROI.png" style="width: 400px;" />
+<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">Feature</span> <span class="pre">Extraction</span></code> tool.</p>
+<a class="reference internal image-reference" href="_images/OPETIA_ROI.png"><img alt="Image" class="align-center" src="_images/OPETIA_ROI.png" style="width: 800px;" />
 </a>
 <br><br><p><em>Setting the parameters:</em></p>
+<ol class="arabic simple">
+<li><p>Before running the processing, you need to select the SUVR reference region. The choices are:</p></li>
+</ol>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Folder</span> <span class="pre">including</span> <span class="pre">pre-processed</span> <span class="pre">data</span></code>: Path to the folder containing the MRI and PET image pre-processing results (data/subject1/OPETIA_output)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tracer</span> <span class="pre">radioactivity</span></code>: The remaining radioactivity of the radiotracer at the time of image acquisition (please refere to OPETIA paper, Equation 3).</p></li>
+<li><p>Cerebellum</p></li>
+<li><p>Cerebellum Gray Matter (default)</p></li>
+<li><p>Global Gray Matter</p></li>
+<li><p>Global White Matter</p></li>
+<li><p>Pons</p></li>
+<li><p>Whole Brain</p></li>
 </ul>
-<div class="admonition-note admonition">
-<p class="admonition-title">Note</p>
-<p>Best practice is to set the <code class="docutils literal notranslate"><span class="pre">Tracer</span> <span class="pre">radioactivity</span></code> to 1. This will still lead to correct SUVR calculation, although the SUV will not be calculated correctly. In this case, leave the body weight and height as default or any other value.</p>
-<p>This is due to the fact that SUVR = SUV / reference reigion SUV. Therefore <code class="docutils literal notranslate"><span class="pre">Tracer</span> <span class="pre">radioactivity</span></code>, <code class="docutils literal notranslate"><span class="pre">Body</span> <span class="pre">weight</span> <span class="pre">(kg)</span></code>, and <code class="docutils literal notranslate"><span class="pre">body</span> <span class="pre">height</span> <span class="pre">(m)</span></code> will cancel out.</p>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Body</span> <span class="pre">weight</span> <span class="pre">(kg)</span></code>: The weight of the subject in kg.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">body</span> <span class="pre">height</span> <span class="pre">(m)</span></code>:The height of the subject in m.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">of</span> <span class="pre">measurement</span></code>: Using the body weight or other options (if <code class="docutils literal notranslate"><span class="pre">Tracer</span> <span class="pre">radioactivity</span> <span class="pre">=</span> <span class="pre">1</span></code> then leave it as default).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SUVR</span> <span class="pre">reference</span></code>: The reference region to calculate SUVR.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Brain</span> <span class="pre">atlas</span></code>: The brain atlas for ROI segmentation.</p></li>
-</ul>
+<ol class="arabic simple" start="2">
+<li><p>If your data contains both T1-weighted MRI and PET images, you can select the checkboxes. If not, you can only select the image modality that your data has or you want to quantify.</p></li>
+</ol>
+<p>Now, you can press the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">data</span></code> button to start the analysis.</p>
 <p><strong>3. Outputs:</strong></p>
 <p>All the outputs will be saved in <code class="docutils literal notranslate"><span class="pre">data/subject1/OPETIA_output/ROI_analysis</span></code> and they include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">OPETIA_cortical_all_info.txt</span></code>: SUV and SUVR (mean, min, max, SD) and cerebral volume for all crotical ROIs.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OPETIA_subcortical_all_info.txt</span></code>: SUV and SUVR (mean, min, max, SD) and cerebral volume for all subcortical ROIs.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Cortical_images</span></code>: Cortical ROI images of PET (SUV)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Cortical_normalized_images</span></code>: Cortical ROI images of PET (SUVR)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Subcortical_images</span></code>: Subcortical ROI images of PET (SUV)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Subcortical_normalized_images</span></code>: Subcortical ROI images of pET (SUVR)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPETIA_measurements.csv</span></code>: A CSV file containing the volume (mm3) and SUVR (mean, min, max) from each ROI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_Cortical_ROIs</span></code>: A folder containing images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_Subcortical_ROIs</span></code>: A folder containing images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET_Cortical_ROIs</span></code>: A folder containing images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PET_Subcortical_ROIs</span></code>: A folder containing images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas).</p></li>
 </ul>
-</section>
+<p><strong>4. Results:</strong></p>
+<p>By pressing the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">the</span> <span class="pre">measurements</span></code> button, a table will appear containing the volume (mm3) and SUVR (mean, min, max) from each ROI.</p>
+<p>In the table, <em>R</em> and <em>L</em> refere to the <em>Right</em> and <em>Left</em> brain hemispheres, respectively.</p>
+<a class="reference internal image-reference" href="_images/ROI_measurements.png"><img alt="Image" class="align-center" src="_images/ROI_measurements.png" style="width: 800px;" />
+</a>
+<br><br></section>
 
 
            </div>

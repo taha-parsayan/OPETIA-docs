@@ -5,6 +5,10 @@ Feature extraction
 
 OPETIA provides a user-friendly interface for the quantification of the PET and MRI images and feature extraction. The software segments the bain into 115 ROIs (96 cortical and 19 subcortical ROIs) and extracts image features from each ROI.
 
+.. admonition:: Note
+
+    If your data does not contain PET images, OPETIA allows to extraction of MRI images features alone.
+    However, PET feature extraction requires a T1-weighted MRI image processed by OPETIA.
 
 *Input:*
 
@@ -12,19 +16,20 @@ OPETIA provides a user-friendly interface for the quantification of the PET and 
 
 *Outputs:*
 
+All the outputs will be saved in ``data/subject1/OPETIA_output/ROI_analysis`` and they include:
+
 - Images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas)
 - Images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas)
 - Cerebral volume measurement (mm3) from each ROI
-- Standardized Uptake Value (SUV) from each ROI (mean, min, max, SD)
-- Standardized Uptake Value Ratio (SUVR) from each ROI (mean, min, max, SD)
+- Standardized Uptake Value Ratio (SUVR) from each ROI (mean, min, max)
 
 **2. Running the ROI analysis:**
 
-From OPETIA, run the ``ROI analysis`` tool.
+From OPETIA, run the ``ROI Feature Extraction`` tool.
 
 .. image:: images/OPETIA_ROI.png
    :alt:  Image
-   :width: 400px
+   :width: 800px
    :align: center
 
 .. raw:: html
@@ -33,31 +38,45 @@ From OPETIA, run the ``ROI analysis`` tool.
 
 *Setting the parameters:*
 
-- ``Folder including pre-processed data``: Path to the folder containing the MRI and PET image pre-processing results (data/subject1/OPETIA_output)
-- ``Tracer radioactivity``: The remaining radioactivity of the radiotracer at the time of image acquisition (please refere to OPETIA paper, Equation 3).
+1. Before running the processing, you need to select the SUVR reference region. The choices are:
 
-.. admonition:: Note
+* Cerebellum
+* Cerebellum Gray Matter (default)
+* Global Gray Matter
+* Global White Matter
+* Pons
+* Whole Brain
 
-    Best practice is to set the ``Tracer radioactivity`` to 1. This will still lead to correct SUVR calculation, although the SUV will not be calculated correctly. In this case, leave the body weight and height as default or any other value.
+2. If your data contains both T1-weighted MRI and PET images, you can select the checkboxes. If not, you can only select the image modality that your data has or you want to quantify.
 
-    This is due to the fact that SUVR = SUV / reference reigion SUV. Therefore ``Tracer radioactivity``, ``Body weight (kg)``, and ``body height (m)`` will cancel out.
-
-- ``Body weight (kg)``: The weight of the subject in kg.
-- ``body height (m)``:The height of the subject in m.
-- ``Type of measurement``: Using the body weight or other options (if ``Tracer radioactivity = 1`` then leave it as default).
-- ``SUVR reference``: The reference region to calculate SUVR.
-- ``Brain atlas``: The brain atlas for ROI segmentation.
+Now, you can press the ``Process data`` button to start the analysis.
 
 **3. Outputs:**
 
 All the outputs will be saved in ``data/subject1/OPETIA_output/ROI_analysis`` and they include:
 
-- ``OPETIA_cortical_all_info.txt``: SUV and SUVR (mean, min, max, SD) and cerebral volume for all crotical ROIs.
-- ``OPETIA_subcortical_all_info.txt``: SUV and SUVR (mean, min, max, SD) and cerebral volume for all subcortical ROIs.
-- ``Cortical_images``: Cortical ROI images of PET (SUV)
-- ``Cortical_normalized_images``: Cortical ROI images of PET (SUVR)
-- ``Subcortical_images``: Subcortical ROI images of PET (SUV)
-- ``Subcortical_normalized_images``: Subcortical ROI images of pET (SUVR)
+- ``OPETIA_measurements.csv``: A CSV file containing the volume (mm3) and SUVR (mean, min, max) from each ROI.
+- ``MRI_Cortical_ROIs``: A folder containing images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas).
+- ``MRI_Subcortical_ROIs``: A folder containing images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas).
+- ``PET_Cortical_ROIs``: A folder containing images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas).
+- ``PET_Subcortical_ROIs``: A folder containing images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas).
+
+**4. Results:**
+
+By pressing the ``Show the measurements`` button, a table will appear containing the volume (mm3) and SUVR (mean, min, max) from each ROI.
+
+In the table, *R* and *L* refere to the *Right* and *Left* brain hemispheres, respectively.
+
+.. image:: images/ROI_measurements.png
+   :alt:  Image
+   :width: 800px
+   :align: center
+
+.. raw:: html
+
+       <br><br>
+
+
 
 
 

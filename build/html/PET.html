@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Feature extraction" href="ROI.html" />
+    <link rel="next" title="ROI Feature extraction" href="ROI.html" />
     <link rel="prev" title="MRI Image Analysis" href="structural.html" /> 
 </head>
 
@@ -49,7 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="dataset.html">Making the data ready</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structural.html">MRI Image Analysis</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PET Image Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ROI.html">Feature extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROI.html">ROI Feature extraction</a></li>
 </ul>
 
         </div>
@@ -81,15 +81,17 @@
 <p><strong>1. Overview:</strong></p>
 <p>OPETIA provides a user-friendly interface for the pre-processing of dynamic/static PET images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.</p>
 <p>Since most PET images are dynamic and contain several volumes, OPETIA by default considers the input image dynamic. However, OPETIA automatically detects the number of volumes in the image. In case of static PET image, OPETIA automatically implements functions for static PET images.</p>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>A dynamic PET image is a single PET.nii.gz with several volumes. A static PET image is a single PET.nii.gz with one volume.</p></li>
+<li><p>PET image processing requires a T1-weighted MRI image processed by OPETIA.</p></li>
+</ol>
+</div>
 <p><em>Input data:</em></p>
 <ul class="simple">
 <li><p>PET volumes (PET.nii.gz)</p></li>
 </ul>
-<div class="admonition-note admonition">
-<p class="admonition-title">Note</p>
-<p>A dynamic PET image is a single PET.nii.gz with several volumes.</p>
-<p>A static PET image is a single PET.nii.gz with one volume.</p>
-</div>
 <p><em>Pre-processing steps:</em></p>
 <ul class="simple">
 <li><p>Splitting the dynamic PET image into several volumes (if the image is dynamic)</p></li>
@@ -158,7 +160,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="structural.html" class="btn btn-neutral float-left" title="MRI Image Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ROI.html" class="btn btn-neutral float-right" title="Feature extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ROI.html" class="btn btn-neutral float-right" title="ROI Feature extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
