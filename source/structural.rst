@@ -7,7 +7,7 @@ OPETIA provides a user-friendly interface for the pre-processing of MRI images, 
 
 *Input data:*
 
-- T1-weighted MRI (T1.nii.gz)
+- T1-weighted MRI (T1.nii.gz) (*Required for PET image analysis*)
 
 or
 
