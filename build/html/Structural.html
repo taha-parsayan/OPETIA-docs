@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="PET Image Analysis" href="PET.html" />
-    <link rel="prev" title="Making the data ready" href="nifti_manager.html" /> 
+    <link rel="prev" title="Making the data ready" href="dataset.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,12 +45,11 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="what_is_opetia.html">What is OPETIA?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_ubuntu.html">Installation on Ubuntu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_macOS.html">Installation on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nifti_manager.html">Making the data ready</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Making the data ready</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MRI Image Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PET.html">PET Image Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ROI.html">Image feature extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROI.html">Feature extraction</a></li>
 </ul>
 
         </div>
@@ -80,65 +79,98 @@
   <section id="mri-image-analysis">
 <h1>MRI Image Analysis<a class="headerlink" href="#mri-image-analysis" title="Link to this heading"></a></h1>
 <p><strong>1. Overview:</strong></p>
-<p>OPETIA provides a user-friendly interface for the pre-processing of T1-weighted MRI images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.</p>
+<p>OPETIA provides a user-friendly interface for the pre-processing of MRI images, which is essential for accurate analysis in multimodal neuroimaging studies. The tool automates the entire process, ensuring that users do not need extensive technical knowledge to perform complex image analyses. However, all the details of the image pre-processing are provided and can be modified by the user if needed.</p>
 <p><em>Input data:</em></p>
 <ul class="simple">
 <li><p>T1-weighted MRI (T1.nii.gz)</p></li>
 </ul>
+<p>or</p>
+<ul class="simple">
+<li><p>T2-weighted MRI (T2.nii.gz)</p></li>
+</ul>
+<p>or</p>
+<ul class="simple">
+<li><p>FLAIR MRI (FLAIR.nii.gz)</p></li>
+</ul>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>Analysis of T1-weighted MRI is essential for the analysis of PET images in OPETIA.</p>
+</div>
 <p><em>Pre-processing steps:</em></p>
+<p>All the pre-processing steps are depicted as a flowchart within OPETIA. In brief, the steps include:</p>
 <ul class="simple">
 <li><p>Skull stripping (brain extraction)</p></li>
+<li><p>Segmentation of Gray matter (GM), White matter (WM), and Cerebrospinal fluid (CSF) in the native space.</p></li>
 <li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
-<li><p>Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) segmentation</p></li>
+<li><p>Registration of GM, WM, and CSF to the MNI-152 space using the transformation matrix obtained from the previous step.</p></li>
 </ul>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
 <p>In the <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811925002812">OPETIA paper</a>, registration to the MNI-152 template is done using a linear method. However, this has been changed to non-linear registration in the current version of OPETIA.</p>
 </div>
 <p><strong>2. Running the Structural image Pre-processing:</strong></p>
-<p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">Structural</span> <span class="pre">image</span> <span class="pre">pre-processing</span></code> tool.</p>
-<a class="reference internal image-reference" href="_images/OPETIA_MRI.png"><img alt="Image" class="align-center" src="_images/OPETIA_MRI.png" style="width: 400px;" />
+<p>From OPETIA, select the <code class="docutils literal notranslate"><span class="pre">MRI</span> <span class="pre">Image</span> <span class="pre">Processing</span></code> tool.</p>
+<a class="reference internal image-reference" href="_images/OPETIA_MRI.png"><img alt="Image" class="align-center" src="_images/OPETIA_MRI.png" style="width: 800px;" />
 </a>
-<br><br><p>All needed to be done is to input the path to the folder containing the T1-weighted MRI image (data/subject1) and click on <code class="docutils literal notranslate"><span class="pre">Process</span></code>. All the parameters will be set automatically.</p>
+<br><br><p>All needed to be done is to input the path to the MRI image (data/subject1/T1.nii.gz or T2.nii.gz or Flair.nii.gz) and click on <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">data</span></code>. All the parameters will be set automatically.</p>
+<p>A new folder called <code class="docutils literal notranslate"><span class="pre">OPETIA_output</span></code> will be created in the subject folder (data/subject1/OPETIA_output), and all the outputs will be saved there.</p>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
-<p>The Terminal prints the log of the pre-processing. If there are any errors, you can read about them in the Terminal.</p>
+<p>The logbox prints the log of the pre-processing. If there are any errors, you can read about them in the Terminal.</p>
 </div>
 <p><strong>3. Output files:</strong></p>
 <p>All the <strong>outputs</strong> will be saved in the folder <code class="docutils literal notranslate"><span class="pre">data/subject1/OPETIA_output</span></code> (automatically created). These include:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">structural_brain_std.nii.gz</span></code>: The skull-stripped T1-weighted MRI image in the MNI-152 space.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">structural_brain.nii.gz</span></code>: The skull-stripped T1-weighted MRI image in the native space.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fast_pve_0.nii.gz</span></code>: CSF</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fast_pve_1.nii.gz</span></code>: GM (Cortex)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fast_pve_2.nii.gz</span></code>: WM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_brain.nii.gz</span></code>: The skull-stripped T1-weighted MRI image in the native space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_brain_mask.nii.gz</span></code>: The brain mask in the native space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_brain_std.nii.gz</span></code>: The skull-stripped T1-weighted MRI image in the MNI-152 space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_GM_native.nii.gz</span></code>: GM in native space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_WM_native.nii.gz</span></code>: WM in native space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_CSF_native.nii.gz</span></code>: CSF in native space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_GM_MNI.nii.gz</span></code>: GM in MNI space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_WM_MNI.nii.gz</span></code>: WM in MNI space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI_CSF_MNI.nii.gz</span></code>: CSF in MNI space</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">MRI</span></code> can be <code class="docutils literal notranslate"><span class="pre">t1</span></code>, <code class="docutils literal notranslate"><span class="pre">t2</span></code>, or <code class="docutils literal notranslate"><span class="pre">flair</span></code> depending on your image modality.</p>
 <p><strong>4. Quality Control:</strong></p>
-<p>By pressing the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">processed</span> <span class="pre">image</span></code> button, an image will appear containing the MNI-152 template on the background and the pre-processes T1 image as an overlay. The user can visually inspect the quality of the pre-processed image.</p>
-<a class="reference internal image-reference" href="_images/MRI_QC.png"><img alt="Image" class="align-center" src="_images/MRI_QC.png" style="width: 800px;" />
+<ul class="simple">
+<li><p>By pressing the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">registration</span> <span class="pre">result</span></code> button, an image will appear containing the MNI-152 template on the background and the pre-processes T1 image as an overlay. The user can visually inspect the quality of the pre-processed image.</p></li>
+<li><p>By pressing the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">segmentation</span> <span class="pre">result</span></code> button, an image will appear containing the segmented GM, WM, and CSF in different colors. The user can visually inspect the quality of the segmentation.</p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/MRI_QC_1.png"><img alt="Image" class="align-center" src="_images/MRI_QC_1.png" style="width: 800px;" />
+</a>
+<br><br><a class="reference internal image-reference" href="_images/MRI_QC_2.png"><img alt="Image" class="align-center" src="_images/MRI_QC_2.png" style="width: 800px;" />
 </a>
 <br><br><p><strong>5. Advanced Options:</strong></p>
-<p><em>Brain extraction:</em></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Fractional</span> <span class="pre">intensity</span> <span class="pre">threshold</span></code>: The threshold (-f) for the brain extraction. The default value is 0.5, and it ranges between 0 and 1. The smaller the value, the larger the brain mask. If 0.5 leads to not missing some brain parts, try smaller values such as 0.4 or 0.3.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Vertical</span> <span class="pre">gradient</span></code>: The vertical gradient (-g) for the brain extraction. The default value is 0. and it ranges between -1 and 1. Negative values (such as -0.2) includes more brain tissuesat the top (superior). Positive values (such as 0.2) includes more brain tissues at the bottom (inferior).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Function/modality</span></code>: The modality for brain extraction. By default, <code class="docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">brain</span> <span class="pre">extraction</span> <span class="pre">using</span> <span class="pre">bet2</span></code> is selected. If the image contains nech and face, use the <code class="docutils literal notranslate"><span class="pre">Biasfield</span> <span class="pre">and</span> <span class="pre">nech</span> <span class="pre">cleanup</span></code> option. It might take a longer time to extract the brain compared to bet2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MRI</span> <span class="pre">mage</span> <span class="pre">modality</span></code>: The user can select the MRI modality (T1-weighted, T2-weighted, or FLAIR).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Registration</span> <span class="pre">class</span></code>: Can be <code class="docutils literal notranslate"><span class="pre">Nonlinear</span></code> or <code class="docutils literal notranslate"><span class="pre">Linear</span></code>. Depending on the selection, the <code class="docutils literal notranslate"><span class="pre">registration</span> <span class="pre">type</span></code> will adapt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Registration</span> <span class="pre">type</span></code>:</p></li>
 </ul>
-<p><em>Registration (native structural space to tandard space):</em></p>
+<p><strong>Linear</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Standard</span> <span class="pre">template</span></code>: This is the standard template to which the native structural image will be registered. The default value is <code class="docutils literal notranslate"><span class="pre">MNI152_T1_2mm_brain.nii.gz</span></code>. You can change it to any other template, such as <code class="docutils literal notranslate"><span class="pre">MNI152_T1_1mm_brain.nii.gz</span></code>. The template is located at <code class="docutils literal notranslate"><span class="pre">OPETIA/Templates</span></code>.</p></li>
+<li><p><cite>Translation (shifts)</cite>: Aligns images by shifting along x, y, z.</p></li>
+<li><p><cite>Rigid-body (rotation + translation)</cite>: Aligns with shifts and rotations, preserving shape.</p></li>
+<li><p><cite>Rigid + uniform scaling (Similarity)</cite>: Adds uniform resizing to rigid alignment.</p></li>
+<li><p><cite>Affine</cite>: Allows scaling, shearing, rotation, and translation.</p></li>
 </ul>
-<div class="admonition-note admonition">
-<p class="admonition-title">Note</p>
-<p>You need to be careful with changing the standard space template. OPETIA provides tools that segments the brain into ROIs and extracts features from these regions. The ROIs incorporated in OPETIA are in the MNI152 2mm space. If you change the template to a different one, you need to make sure that the ROIs are also in the same space by modifying the files and images.</p>
-</div>
+<p><strong>Nonlinear</strong></p>
+<ul class="simple">
+<li><p><cite>Symmetric normalization (nonlinear warp)</cite>: Flexible nonlinear warp preserving topology.</p></li>
+<li><p><cite>Elastic deformation using SyN</cite>: SyN with extra elastic deformation for local flexibility.</p></li>
+<li><p><cite>Nonlinear deformation (no affine initialization)</cite>: Pure nonlinear warp without affine pre-alignment.</p></li>
+<li><p><cite>SyN using cross-correlation metric</cite>: SyN optimized with cross-correlation similarity metric.</p></li>
+<li><p><cite>SyN with rigid + affine initialization</cite>: SyN with rigid and affine initialization steps.</p></li>
+<li><p><cite>More aggressive SyN (stronger warps)</cite>: Stronger SyN warps for high deformations.</p></li>
+<li><p><cite>SyN optimized for b0-dMRI → T1 registration</cite>: SyN tuned for b0-dMRI to T1 registration.</p></li>
+</ul>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nifti_manager.html" class="btn btn-neutral float-left" title="Making the data ready" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dataset.html" class="btn btn-neutral float-left" title="Making the data ready" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="PET.html" class="btn btn-neutral float-right" title="PET Image Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

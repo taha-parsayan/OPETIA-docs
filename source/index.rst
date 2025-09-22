@@ -1,7 +1,6 @@
 .. OPETIA documentation master file, created by
    sphinx-quickstart on Sun Jul 13 15:26:45 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+
 
 OPETIA overview
 ====================
@@ -26,17 +25,17 @@ The source code for OPETIA is available on `GitHub <https://github.com/taha-pars
 
 **Where to get help?**
 
-- Check out this webpage: `Taha Parsayan <https://taha-parsayan.crd.co/>`_
-- Kindly send your questions, suggestions, and issues to me via parsayan.t@gmail.com
+- Write your question in the `GitHub Issues <https://github.com/taha-parsayan/OPETIA/issues>`_ section.
+- Report bugs or request features in the `GitHub Issues <https://github.com/taha-parsayan/OPETIA/issues>`_ section.
+- Or kindly send your questions, suggestions, and issues to me via parsayan.t@gmail.com
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    what_is_opetia
-   installation_ubuntu
-   installation_macOS
-   nifti_manager
+   installation
+   dataset
    structural
    PET
    ROI

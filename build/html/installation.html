@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation on macOS &mdash; OPETIA  documentation</title>
+  <title>Installation &mdash; OPETIA  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Making the data ready" href="nifti_manager.html" />
-    <link rel="prev" title="Installation on Ubuntu" href="installation_ubuntu.html" /> 
+    <link rel="next" title="Making the data ready" href="dataset.html" />
+    <link rel="prev" title="What is OPETIA?" href="what_is_opetia.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,12 +45,11 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="what_is_opetia.html">What is OPETIA?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_ubuntu.html">Installation on Ubuntu</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nifti_manager.html">Making the data ready</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Making the data ready</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structural.html">MRI Image Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PET.html">PET Image Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ROI.html">Image feature extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROI.html">Feature extraction</a></li>
 </ul>
 
         </div>
@@ -67,9 +66,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Installation on macOS</li>
+      <li class="breadcrumb-item active">Installation</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/installation_macOS.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -77,49 +76,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation-on-macos">
-<h1>Installation on macOS<a class="headerlink" href="#installation-on-macos" title="Link to this heading"></a></h1>
-<p>OPETIA can be installed on macOS systems using the following steps:</p>
-<ol class="arabic simple">
-<li><p><strong>Install Python 3.8 or higher</strong></p></li>
-</ol>
-<p>Ensure you have Python installed on your system. You can check your Python version by running in a terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>OPETIA can be installed on macOS/Windows/Ubuntu systems using the following steps:</p>
+<ol class="arabic">
+<li><p><strong>Install Conda</strong></p>
+<p>You can install Conda from the official website:</p>
+<p><a class="reference external" href="https://www.anaconda.com/download">Conda Installation Guide</a></p>
+<p>(Choose Miniconda for your OS: Windows, macOS, or Linux.)</p>
+<p>Check if Conda is installed correctly by running the following command in your terminal (macos/Ubuntu) or Anaconda Prompt (Windows):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>--version
 </pre></div>
 </div>
-<p>If Python is not installed, you can install it using <a class="reference external" href="https://brew.sh">Homebrew</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>update
-brew<span class="w"> </span>install<span class="w"> </span>python@3.13
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p><strong>Install FSL</strong></p></li>
-</ol>
-<p>OPETIA relies on FSL for image processing. You can install FSL by following the instructions on the FSL website:
-<a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation">FSL Installation Guide</a>.</p>
-<ol class="arabic simple" start="3">
-<li><p><strong>Clone the OPETIA Repository</strong></p></li>
-</ol>
-<p>Clone the OPETIA repository from GitHub:</p>
+</li>
+<li><p><strong>Download OPETIA</strong></p>
+<p>You can download OPETIA from its GitHub repository by running the following command in your terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/taha-parsayan/OPETIA.git
+<span class="nb">cd</span><span class="w"> </span>OPETIA
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p><strong>Navigate to the OPETIA Directory</strong></p></li>
+</li>
+<li><p><strong>Install the packages</strong></p></li>
 </ol>
-<p>Change to the OPETIA directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>OPETIA
+<p>Run the following command in your terminal to install the required packages:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li><p><strong>Run OPETIA</strong></p></li>
+</div></blockquote>
+<ol class="arabic" start="4">
+<li><p><strong>Run OPETIA</strong></p>
+<p>Activate the OPETIA environment by running the following command in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>OPETIA
+</pre></div>
+</div>
+<p>Then, run OPETIA by executing the following command in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+<p>You should see the OPETIA interface as shown below:</p>
+</li>
 </ol>
-<p>You can run OPETIA by executing the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>OPETIA.py
-</pre></div>
-</div>
-<p>This will launch the OPETIA graphical user interface.</p>
-<a class="reference internal image-reference" href="_images/OPETIA_main.png"><img alt="OPETIA Interface" class="align-center" src="_images/OPETIA_main.png" style="width: 200px;" />
+<a class="reference internal image-reference" href="_images/OPETIA_MRI.png"><img alt="OPETIA Interface" class="align-center" src="_images/OPETIA_MRI.png" style="width: 800px;" />
 </a>
 <br><br></section>
 
@@ -127,8 +125,8 @@ brew<span class="w"> </span>install<span class="w"> </span>python@3.13
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="installation_ubuntu.html" class="btn btn-neutral float-left" title="Installation on Ubuntu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="nifti_manager.html" class="btn btn-neutral float-right" title="Making the data ready" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="what_is_opetia.html" class="btn btn-neutral float-left" title="What is OPETIA?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dataset.html" class="btn btn-neutral float-right" title="Making the data ready" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

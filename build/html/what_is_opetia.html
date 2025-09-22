@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation on Ubuntu" href="installation_ubuntu.html" />
+    <link rel="next" title="Installation" href="installation.html" />
     <link rel="prev" title="OPETIA overview" href="index.html" /> 
 </head>
 
@@ -45,12 +45,11 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">What is OPETIA?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_ubuntu.html">Installation on Ubuntu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation_macOS.html">Installation on macOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nifti_manager.html">Making the data ready</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Making the data ready</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structural.html">MRI Image Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PET.html">PET Image Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ROI.html">Image feature extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ROI.html">Feature extraction</a></li>
 </ul>
 
         </div>
@@ -79,32 +78,64 @@
              
   <section id="what-is-opetia">
 <h1>What is OPETIA?<a class="headerlink" href="#what-is-opetia" title="Link to this heading"></a></h1>
-<a class="reference internal image-reference" href="_images/OPETIA_all.png"><img alt="OPETIA Interface" class="align-center" src="_images/OPETIA_all.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/OPETIA_PET.png"><img alt="OPETIA Interface" class="align-center" src="_images/OPETIA_PET.png" style="width: 800px;" />
 </a>
-<br><br><p>Advanced Magnetic Resonance Imaging (MRI) and Positron Emission Tomography (PET) analysis provide precise information on brain structure and function for diagnosis and treatment. However, most clinical software lacks accurate quantification, is complicated to use, or does not provide PET image analysis. <strong>FSL</strong> is a widely used toolbox which provides comprehensive functions for the analysis of MRI images, but it lacks functions for the analysis of PET images.</p>
-<p>Therefore, we developed <strong>OPETIA (Odense-Oxford PET Image Analysis)</strong>, a user-friendly toolbox based on FSL and Python, which automates multimodal neuroimage pre-processing and calculates SUV, SUVR, and cerebral volume in regions of interest (ROI). We validated OPETIA using FDG PET and MRI data from healthy controls and Alzheimer’s patients in the ADNI dataset, comparing results with SPM12.</p>
+<br><br><div class="admonition-cite-opetia admonition">
+<p class="admonition-title">Cite OPETIA</p>
+<p>You are kindly asked to cite the following paper when using OPETIA in your work:</p>
+<p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811925002812">OPETIA Publication in NeuroImage</a></p>
+<p>Thank you!</p>
+</div>
+<p>OPETIA is a user-friendly PET/MRI (Positron Emission Tomography / Magnetic Resonance Imaging) image analysis software, developed using Python for accurate brain image quantification.</p>
+<p>OPETIA can be run on:
+- Windows
+- Linux Ubuntu
+- MacOS</p>
+<hr class="docutils" />
 <p><strong>OPETIA provides:</strong></p>
 <ul class="simple">
-<li><p>A user-friendly interface for multimodal neuroimage preprocessing where all parameters are set automatically, therefore you are not required to have any technical or image analysis knowledge.</p></li>
-<li><p>Automatic relocation of the DICOM-to-NIfTI converted images to the subject’s folders and renaming them to T1 and PET.</p></li>
-<li><p>Automatic pre-processing of the MRI images.</p></li>
-<li><p>Automatic pre-processing of statisc/dynamic PET images (dynamic PET images are converted to static PET in the T1 space).</p></li>
-<li><p>Automatic identification of 115 ROIs according to the Harvard-Oxford brain atlas.</p></li>
-<li><p>Automatic calculation of SUV, SUVR, and cerebral volume in the ROIs.</p></li>
+<li><p>Structural (MRI) image processing</p></li>
+<li><p>Functional (PET) image processing (static or dynamic)</p></li>
+<li><p>ROI analysis: to calculate SUVR and cortical volume for 115 ROIs</p></li>
+<li><p>MRIcroGL: for converting DICOM images to nifty images, and also for visualization.</p></li>
 </ul>
+<p>Every tool within OPETIA is provided with the flowchart of the data processing, including the input data and the output data.
+Additionally, the log box within OPETIA prints the data processing stages for monitoring and error handling.</p>
+<hr class="docutils" />
+<p><strong>Supporting Systems:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Windows 11</p></li>
+<li><p>MacOS</p></li>
+<li><p>Ubuntu</p></li>
+</ul>
+</div></blockquote>
 <hr class="docutils" />
 <p><strong>Input Data:</strong></p>
 <ul class="simple">
 <li><p>Static/dynamic PET image</p></li>
-<li><p>T1-weighted MRI image</p></li>
+<li><p>T1-weighted/T2-weighted/Flair MRI image</p></li>
 </ul>
 <p><strong>Output Data:</strong></p>
 <ul class="simple">
 <li><p>Separate images for each ROI according to the Harvard-Oxford brain atlas (115 ROIs)</p></li>
-<li><p>Standardized Uptake Value (SUV) for 115 ROIs: mean, min, max, SD</p></li>
-<li><p>Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max, SD</p></li>
+<li><p>Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max</p></li>
 <li><p>Cerebral Volume for 115 ROIs</p></li>
 </ul>
+<div class="admonition-opetia-new-release admonition">
+<p class="admonition-title">OPETIA new release</p>
+<p>OPETIA is now a stand-alone software!</p>
+<p>The previous version of OPETIA relied on functions from the FSL software for image processing and data analysis. The new version of OPETIA is completely standalone, and therefore, there is no need to have FSL installed anymore. Instead, Python packages, including Ants and Nibabel, have been used for image processing, and Matplotlib for data analysis.</p>
+<p>Furthermore, OPETIA can now be run on Windows 11 as well! In addition to macOS and Ubuntu.</p>
+<p>In general, the changes include:</p>
+<p>Removing the dependency of FSL functions.
+Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing.
+Ability to run OPETIA on Windows, macOS, and Ubuntu.
+Using one GUI for the whole software, instead of multiple GUIs for every tool.
+Adding the MRIcroGL for the image visualization and also DICOM to NIfTI conversion of images.
+Adding a log box to print the data processing stages and possible errors.
+Adding the data processing pipeline flowchart for more clarity.</p>
+</div>
 </section>
 
 
@@ -112,7 +143,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="OPETIA overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="installation_ubuntu.html" class="btn btn-neutral float-right" title="Installation on Ubuntu" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

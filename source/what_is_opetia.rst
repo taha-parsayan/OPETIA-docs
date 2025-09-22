@@ -1,38 +1,77 @@
 What is OPETIA?
 ====================
 
-.. image:: images/OPETIA_all.png
+.. image:: images/OPETIA_PET.png
    :alt: OPETIA Interface
-   :width: 600px
+   :width: 800px
    :align: center
 
 .. raw:: html
 
        <br><br>
 
-Advanced Magnetic Resonance Imaging (MRI) and Positron Emission Tomography (PET) analysis provide precise information on brain structure and function for diagnosis and treatment. However, most clinical software lacks accurate quantification, is complicated to use, or does not provide PET image analysis. **FSL** is a widely used toolbox which provides comprehensive functions for the analysis of MRI images, but it lacks functions for the analysis of PET images.
+.. admonition:: Cite OPETIA
 
-Therefore, we developed **OPETIA (Odense-Oxford PET Image Analysis)**, a user-friendly toolbox based on FSL and Python, which automates multimodal neuroimage pre-processing and calculates SUV, SUVR, and cerebral volume in regions of interest (ROI). We validated OPETIA using FDG PET and MRI data from healthy controls and Alzheimer’s patients in the ADNI dataset, comparing results with SPM12.
+   You are kindly asked to cite the following paper when using OPETIA in your work:
+
+   `OPETIA Publication in NeuroImage <https://www.sciencedirect.com/science/article/pii/S1053811925002812>`_
+
+   Thank you!
+
+OPETIA is a user-friendly PET/MRI (Positron Emission Tomography / Magnetic Resonance Imaging) image analysis software, developed using Python for accurate brain image quantification.
+
+OPETIA can be run on:
+- Windows
+- Linux Ubuntu
+- MacOS
+
+========
 
 **OPETIA provides:**
 
-- A user-friendly interface for multimodal neuroimage preprocessing where all parameters are set automatically, therefore you are not required to have any technical or image analysis knowledge.
-- Automatic relocation of the DICOM-to-NIfTI converted images to the subject's folders and renaming them to T1 and PET.
-- Automatic pre-processing of the MRI images.
-- Automatic pre-processing of statisc/dynamic PET images (dynamic PET images are converted to static PET in the T1 space).
-- Automatic identification of 115 ROIs according to the Harvard-Oxford brain atlas.
-- Automatic calculation of SUV, SUVR, and cerebral volume in the ROIs.
+- Structural (MRI) image processing
+- Functional (PET) image processing (static or dynamic)
+- ROI analysis: to calculate SUVR and cortical volume for 115 ROIs
+- MRIcroGL: for converting DICOM images to nifty images, and also for visualization.
+
+Every tool within OPETIA is provided with the flowchart of the data processing, including the input data and the output data.
+Additionally, the log box within OPETIA prints the data processing stages for monitoring and error handling.
+
 ========
 
+**Supporting Systems:**
+
+ - Windows 11
+ - MacOS
+ - Ubuntu
+
+========
 
 **Input Data:**
 
 - Static/dynamic PET image
-- T1-weighted MRI image
+- T1-weighted/T2-weighted/Flair MRI image
 
 **Output Data:**
 
 - Separate images for each ROI according to the Harvard-Oxford brain atlas (115 ROIs) 
-- Standardized Uptake Value (SUV) for 115 ROIs: mean, min, max, SD
-- Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max, SD
+- Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max
 - Cerebral Volume for 115 ROIs
+
+.. admonition:: OPETIA new release
+
+   OPETIA is now a stand-alone software!
+
+   The previous version of OPETIA relied on functions from the FSL software for image processing and data analysis. The new version of OPETIA is completely standalone, and therefore, there is no need to have FSL installed anymore. Instead, Python packages, including Ants and Nibabel, have been used for image processing, and Matplotlib for data analysis.
+
+   Furthermore, OPETIA can now be run on Windows 11 as well! In addition to macOS and Ubuntu.
+
+   In general, the changes include:
+
+   Removing the dependency of FSL functions.
+   Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing.
+   Ability to run OPETIA on Windows, macOS, and Ubuntu.
+   Using one GUI for the whole software, instead of multiple GUIs for every tool.
+   Adding the MRIcroGL for the image visualization and also DICOM to NIfTI conversion of images.
+   Adding a log box to print the data processing stages and possible errors.
+   Adding the data processing pipeline flowchart for more clarity.
