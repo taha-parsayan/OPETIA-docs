@@ -17,9 +17,17 @@ OPETIA can be installed on macOS/Windows/Ubuntu systems using the following step
 
       conda --version
 
-2. **Download OPETIA**
+2. **Install git
 
-   You can download OPETIA from its GitHub repository by running the following command in your terminal:
+   In the terminal (macOS/Ubuntu) or Anaconda Prompt (Windows), run the following command to install git:
+   .. code-block:: bash
+
+      conda install -c anaconda git
+      git --version
+
+3. **Download OPETIA**
+
+   You can download OPETIA from its GitHub repository by running the following command in the terminal or Anaconda Prompt:
 
    .. code-block:: bash
 
@@ -27,27 +35,22 @@ OPETIA can be installed on macOS/Windows/Ubuntu systems using the following step
       cd OPETIA
 
 
-3. **Install the packages**
+4. **Install the packages**
 
-Run the following command in your terminal to install the required packages:
+Run the following command in your terminal or Anaconda Prompt to install the required packages:
 
    .. code-block:: bash
 
       conda env create -f environment.yml
 
-4. **Run OPETIA**
+5. **Run OPETIA**
 
-   Activate the OPETIA environment by running the following command in your terminal:
-
-   .. code-block:: bash
-
-      conda activate OPETIA
-
-   Then, run OPETIA by executing the following command in your terminal:
+   Activate the OPETIA environment and start OPETIA by running the following commands:
 
    .. code-block:: bash
 
-      python main.py
+      conda activate opetia
+      python OPETIA.py
 
    You should see the OPETIA interface as shown below:
 
