@@ -17,7 +17,7 @@ OPETIA can be installed on macOS/Windows/Ubuntu systems using the following step
 
       conda --version
 
-2. **Install git
+2. **Install git**
 
    In the terminal (macOS/Ubuntu) or Anaconda Prompt (Windows), run the following command to install git:
    .. code-block:: bash
