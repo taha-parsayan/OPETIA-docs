@@ -64,7 +64,7 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
 
    The previous version of OPETIA relied on functions from the FSL software for image processing and data analysis. The new version of OPETIA is completely standalone, and therefore, there is no need to have FSL installed anymore. Instead, Python packages, including Ants and Nibabel, have been used for image processing, and Matplotlib for data analysis.
 
-   Furthermore, OPETIA can now be run on Windows 11 as well! In addition to macOS and Ubuntu.
+   Furthermore, OPETIA can now be run on Windows as well! In addition to macOS and Ubuntu.
 
    In general, the changes include:
 
