@@ -19,17 +19,50 @@ Since most PET images are dynamic and contain several volumes, OPETIA by default
 
 *Pre-processing steps:*
 
-- Splitting the dynamic PET image into several volumes (if the image is dynamic)
-- Co-registration of the first PET vol to the native T1 space (6 degrees of freedom)
-- Co-registration of the remaining PET vols to the results of previous stage (6 degrees of freedom)
-- Summing all resulting vols to create a static PET image
-- Skull stripping of all PET vols (brain extraction)
-- Smoothing to increase the signal-to-noise ratio in native space
-- Segmentation of Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) in native space
-- Co-registration from native PET to native T1 space (6 degrees of freedom)
-- Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by >12 degrees of freedom)
-- Smoothing to increase the signal-to-noise ratio in MNI space
-- Segmentation of Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) in MNI space
+All the pre-processing steps are depicted as a flowchart within OPETIA. In brief, the steps include:
+
+.. list-table:: PET Processing Pipeline Tools
+   :header-rows: 1
+   :widths: 40 30 30
+
+   * - **Processing Stage**
+     - **Primary Tool**
+     - **Secondary Tools**
+   * - Splitting the dynamic PET image into several volumes (if the image is dynamic)
+     - nibabel
+     - NumPy
+   * - Co-registration of the first PET volume to the native T1 space (6 degrees of freedom)
+     - ANTsPy
+     - –
+   * - Co-registration of the remaining PET volumes to the result of previous stage (6 degrees of freedom)
+     - ANTsPy
+     - –
+   * - Summing all resulting volumes to create a static PET image
+     - nibabel
+     - NumPy
+   * - Skull stripping of all PET volumes (brain extraction)
+     - ANTsPyNet
+     - ANTsPy
+   * - Smoothing to increase the signal-to-noise ratio in native space
+     - SciPy (Gaussian filter)
+     - nibabel
+   * - Segmentation of Gray Matter (GM), White Matter (WM), and Cerebrospinal Fluid (CSF) in native space
+     - ANTsPy (Atropos)
+     - nibabel
+   * - Co-registration from native PET to native T1 space (6 degrees of freedom)
+     - ANTsPy
+     - –
+   * - Non-linear registration to the MNI-152 template (2×2×2 mm voxel size)  
+       (12 degrees of freedom followed by >12 degrees of freedom)
+     - ANTsPy
+     - –
+   * - Smoothing to increase the signal-to-noise ratio in MNI space
+     - SciPy (Gaussian filter)
+     - nibabel
+   * - Segmentation of Gray Matter (GM), White Matter (WM), and Cerebrospinal Fluid (CSF) in MNI space
+     - ANTsPy (Atropos)
+     - nibabel
+
 
 **2. Running the PET Pre-processing:**
 

@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ROI Feature extraction" href="ROI.html" />
+    <link rel="next" title="Feature extraction" href="ROI.html" />
     <link rel="prev" title="MRI Image Analysis" href="structural.html" /> 
 </head>
 
@@ -93,19 +93,68 @@
 <li><p>PET volumes (PET.nii.gz)</p></li>
 </ul>
 <p><em>Pre-processing steps:</em></p>
-<ul class="simple">
-<li><p>Splitting the dynamic PET image into several volumes (if the image is dynamic)</p></li>
-<li><p>Co-registration of the first PET vol to the native T1 space (6 degrees of freedom)</p></li>
-<li><p>Co-registration of the remaining PET vols to the results of previous stage (6 degrees of freedom)</p></li>
-<li><p>Summing all resulting vols to create a static PET image</p></li>
-<li><p>Skull stripping of all PET vols (brain extraction)</p></li>
-<li><p>Smoothing to increase the signal-to-noise ratio in native space</p></li>
-<li><p>Segmentation of Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) in native space</p></li>
-<li><p>Co-registration from native PET to native T1 space (6 degrees of freedom)</p></li>
-<li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
-<li><p>Smoothing to increase the signal-to-noise ratio in MNI space</p></li>
-<li><p>Segmentation of Gray matter (GM), white matter (WM), and cerebrospinal fluid (CSF) in MNI space</p></li>
-</ul>
+<p>All the pre-processing steps are depicted as a flowchart within OPETIA. In brief, the steps include:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">PET Processing Pipeline Tools</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Processing Stage</strong></p></th>
+<th class="head"><p><strong>Primary Tool</strong></p></th>
+<th class="head"><p><strong>Secondary Tools</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Splitting the dynamic PET image into several volumes (if the image is dynamic)</p></td>
+<td><p>nibabel</p></td>
+<td><p>NumPy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Co-registration of the first PET volume to the native T1 space (6 degrees of freedom)</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>Co-registration of the remaining PET volumes to the result of previous stage (6 degrees of freedom)</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>Summing all resulting volumes to create a static PET image</p></td>
+<td><p>nibabel</p></td>
+<td><p>NumPy</p></td>
+</tr>
+<tr class="row-even"><td><p>Skull stripping of all PET volumes (brain extraction)</p></td>
+<td><p>ANTsPyNet</p></td>
+<td><p>ANTsPy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Smoothing to increase the signal-to-noise ratio in native space</p></td>
+<td><p>SciPy (Gaussian filter)</p></td>
+<td><p>nibabel</p></td>
+</tr>
+<tr class="row-even"><td><p>Segmentation of Gray Matter (GM), White Matter (WM), and Cerebrospinal Fluid (CSF) in native space</p></td>
+<td><p>ANTsPy (Atropos)</p></td>
+<td><p>nibabel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Co-registration from native PET to native T1 space (6 degrees of freedom)</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>Non-linear registration to the MNI-152 template (2×2×2 mm voxel size)
+(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>Smoothing to increase the signal-to-noise ratio in MNI space</p></td>
+<td><p>SciPy (Gaussian filter)</p></td>
+<td><p>nibabel</p></td>
+</tr>
+<tr class="row-even"><td><p>Segmentation of Gray Matter (GM), White Matter (WM), and Cerebrospinal Fluid (CSF) in MNI space</p></td>
+<td><p>ANTsPy (Atropos)</p></td>
+<td><p>nibabel</p></td>
+</tr>
+</tbody>
+</table>
 <p><strong>2. Running the PET Pre-processing:</strong></p>
 <p>From OPETIA, run the <code class="docutils literal notranslate"><span class="pre">PET</span> <span class="pre">Image</span> <span class="pre">Processing</span></code> tool. All needed to be done is to input the path to the PET volumes (data/subject1/PET.nii.gz) and press the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">data</span></code> button.</p>
 <a class="reference internal image-reference" href="_images/OPETIA_PET.png"><img alt="Image" class="align-center" src="_images/OPETIA_PET.png" style="width: 800px;" />
@@ -160,7 +209,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="structural.html" class="btn btn-neutral float-left" title="MRI Image Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ROI.html" class="btn btn-neutral float-right" title="ROI Feature extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ROI.html" class="btn btn-neutral float-right" title="Feature extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

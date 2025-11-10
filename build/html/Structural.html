@@ -98,12 +98,38 @@
 </div>
 <p><em>Pre-processing steps:</em></p>
 <p>All the pre-processing steps are depicted as a flowchart within OPETIA. In brief, the steps include:</p>
-<ul class="simple">
-<li><p>Skull stripping (brain extraction)</p></li>
-<li><p>Segmentation of Gray matter (GM), White matter (WM), and Cerebrospinal fluid (CSF) in the native space.</p></li>
-<li><p>Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by &gt;12 degrees of freedom)</p></li>
-<li><p>Registration of GM, WM, and CSF to the MNI-152 space using the transformation matrix obtained from the previous step.</p></li>
-</ul>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">MRI Processing Pipeline Tools</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Processing Stage</strong></p></th>
+<th class="head"><p><strong>Primary Tool</strong></p></th>
+<th class="head"><p><strong>Secondary Tools</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Skull Stripping (Brain Extraction)</p></td>
+<td><p>ANTsPyNet</p></td>
+<td><p>ANTsPy</p></td>
+</tr>
+<tr class="row-odd"><td><p>GM/WM/CSF Segmentation in Native Space</p></td>
+<td><p>ANTsPy (Atropos)</p></td>
+<td><p>nibabel</p></td>
+</tr>
+<tr class="row-even"><td><p>Registration to MNI152 Template (2×2×2 mm)</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>Registration of GM/WM/CSF to MNI152 Space</p></td>
+<td><p>ANTsPy</p></td>
+<td><p>nibabel</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
 <p>In the <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811925002812">OPETIA paper</a>, registration to the MNI-152 template is done using a linear method. However, this has been changed to non-linear registration in the current version of OPETIA.</p>

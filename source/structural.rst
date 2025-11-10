@@ -25,10 +25,29 @@ or
 
 All the pre-processing steps are depicted as a flowchart within OPETIA. In brief, the steps include:
 
-- Skull stripping (brain extraction)
-- Segmentation of Gray matter (GM), White matter (WM), and Cerebrospinal fluid (CSF) in the native space.
-- Non-linear registration to the MNI-152 template (2x2x2mm voxel size)(12 degrees of freedom followed by >12 degrees of freedom)
-- Registration of GM, WM, and CSF to the MNI-152 space using the transformation matrix obtained from the previous step.
+.. list-table:: MRI Processing Pipeline Tools
+   :header-rows: 1
+   :widths: 25 35 20 20
+
+.. list-table:: MRI Processing Pipeline Tools
+   :header-rows: 1
+   :widths: 40 30 30
+
+   * - **Processing Stage**
+     - **Primary Tool**
+     - **Secondary Tools**
+   * - Skull Stripping (Brain Extraction)
+     - ANTsPyNet
+     - ANTsPy
+   * - GM/WM/CSF Segmentation in Native Space
+     - ANTsPy (Atropos)
+     - nibabel
+   * - Registration to MNI152 Template (2×2×2 mm)
+     - ANTsPy
+     - –
+   * - Registration of GM/WM/CSF to MNI152 Space
+     - ANTsPy
+     - nibabel
 
 .. admonition:: Note
 
