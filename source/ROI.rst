@@ -21,6 +21,7 @@ All the outputs will be saved in ``data/subject1/OPETIA_output/ROI_analysis`` an
 - Images of 96 cortical ROIs (according to the Harvard-Oxford brain atlas)
 - Images of 19 subcortical ROIs (according to the Harvard-Oxford brain atlas)
 - Cerebral volume measurement (mm3) from each ROI
+- Standardized Uptake Value (SUV) from each ROI (mean, min, max)
 - Standardized Uptake Value Ratio (SUVR) from each ROI (mean, min, max)
 
 **2. Running the ROI analysis:**

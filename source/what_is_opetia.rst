@@ -66,12 +66,23 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
 
    Furthermore, OPETIA can now be run on Windows as well! In addition to macOS and Ubuntu.
 
-   In general, the changes include:
+   The data processing pipeline has NOT changed, and is the same as in the Publication.
 
-   Removing the dependency of FSL functions.
-   Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing.
+   In general, what has changed in the new version of OPETIA:
+
+   Adding the processing if dynamic PET images.
+   Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing instead of FSL functions.
    Ability to run OPETIA on Windows, macOS, and Ubuntu.
    Using one GUI for the whole software, instead of multiple GUIs for every tool.
    Adding the MRIcroGL for the image visualization and also DICOM to NIfTI conversion of images.
    Adding a log box to print the data processing stages and possible errors.
    Adding the data processing pipeline flowchart for more clarity.
+
+   What has not changed:
+
+   Data processing pipeline and method.
+   Input and output data structure.
+   Brain atlas for ROI analysis (Harvard-Oxford brain atlas).
+   SUVR calculation method.
+   Volume calculation method.
+
