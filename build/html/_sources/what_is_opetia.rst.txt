@@ -66,11 +66,11 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
 
    Furthermore, OPETIA can now be run on Windows as well! In addition to macOS and Ubuntu.
 
-   The data processing pipeline has NOT changed, and is the same as in the Publication.
+   **The data processing pipeline has NOT changed, and is the same as in the Publication.**
 
    In general, what has changed in the new version of OPETIA:
 
-   Adding the processing if dynamic PET images.
+   - Adding the processing if dynamic PET images.
    - Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing instead of FSL functions.
    - Ability to run OPETIA on Windows, macOS, and Ubuntu.
    - Using one GUI for the whole software, instead of multiple GUIs for every tool.
