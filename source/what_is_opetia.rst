@@ -58,31 +58,14 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
 - Standardized Uptake Value Ratio (SUVR) for 115 ROIs: mean, min, max
 - Cerebral Volume for 115 ROIs
 
-.. admonition:: OPETIA new release
+.. admonition:: OPETIA – New Release Highlights
 
-   OPETIA is now a stand-alone software!
+   - Added dedicated processing pipelines for dynamic PET imaging.
+   - Integrated Python-based neuroimaging libraries (ANTs, NiBabel, NumPy, Matplotlib) to support data processing aligned with standard FSL workflows.
+   - Enabled cross-platform support, allowing OPETIA to run on Windows, macOS, and Ubuntu.
+   - Unified the user experience by consolidating all tools into a single, consistent graphical user interface.
+   - Integrated MRIcroGL for advanced image visualization, including built-in DICOM-to-NIfTI conversion.
+   - Introduced a logging panel to display processing steps, execution status, and error messages in real time.
+   - Added a visual flowchart of the data processing pipeline to improve transparency and user understanding.
 
-   The previous version of OPETIA relied on functions from the FSL software for image processing and data analysis. The new version of OPETIA is completely standalone, and therefore, there is no need to have FSL installed anymore. Instead, Python packages, including Ants and Nibabel, have been used for image processing, and Matplotlib for data analysis.
-
-   Furthermore, OPETIA can now be run on Windows as well! In addition to macOS and Ubuntu.
-
-   **The data processing pipeline has NOT changed, and is the same as in the Publication.**
-
-   In general, what has changed in the new version of OPETIA:
-
-   - Adding the processing if dynamic PET images.
-   - Using Python packages (Ants, Nibabel, Matplotlib, Numpy) for data processing instead of FSL functions.
-   - Ability to run OPETIA on Windows, macOS, and Ubuntu.
-   - Using one GUI for the whole software, instead of multiple GUIs for every tool.
-   - Adding the MRIcroGL for the image visualization and also DICOM to NIfTI conversion of images.
-   - Adding a log box to print the data processing stages and possible errors.
-   - Adding the data processing pipeline flowchart for more clarity.
-
-   What has not changed:
-
-   - Data processing pipeline and method.
-   - Input and output data structure.
-   - Brain atlas for ROI analysis (Harvard-Oxford brain atlas).
-   - SUVR calculation method.
-   - Volume calculation method.
 
