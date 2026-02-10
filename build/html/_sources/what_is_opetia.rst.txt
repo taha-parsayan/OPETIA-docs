@@ -66,10 +66,10 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
    This transition removes external software dependencies, improves portability across operating systems, and facilitates reproducible deployment of the OPETIA pipeline.
 
    Key new features in this release include:
-   
-   - Added dedicated processing pipelines for dynamic PET imaging.
-   - Integrated Python-based neuroimaging libraries (ANTs, NiBabel, NumPy, Matplotlib) to support data processing aligned with commonly used neuroimaging workflows.
+
+   - Integrated Python-based neuroimaging libraries (ANTs, NiBabel) to support data processing aligned with the validated pipeline in the OPETIA publication.
    - Enabled cross-platform support, allowing OPETIA to run on Windows, macOS, and Ubuntu.
+   - Added dedicated processing pipelines for dynamic PET imaging.
    - Unified the user experience by consolidating all tools into a single, consistent graphical user interface.
    - Integrated MRIcroGL for advanced image visualization, including built-in DICOM-to-NIfTI conversion.
    - Introduced a logging panel to display processing steps, execution status, and error messages in real time.
