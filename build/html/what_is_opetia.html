@@ -124,9 +124,14 @@ Additionally, the log box within OPETIA prints the data processing stages for mo
 </ul>
 <div class="admonition-opetia-new-release-highlights admonition">
 <p class="admonition-title">OPETIA – New Release Highlights</p>
+<p>The original FSL-based OPETIA used FSL functions for image pre-processing.
+The current version replaces FSL with ANTs and NiBabel to enable a standalone, cross-platform implementation.
+ANTs and NiBabel provide state-of-the-art algorithms for image registration and robust handling of neuroimaging data formats, and are widely adopted in the neuroimaging community.
+This transition removes external software dependencies, improves portability across operating systems, and facilitates reproducible deployment of the OPETIA pipeline.</p>
+<p>Key new features in this release include:</p>
 <ul class="simple">
 <li><p>Added dedicated processing pipelines for dynamic PET imaging.</p></li>
-<li><p>Integrated Python-based neuroimaging libraries (ANTs, NiBabel, NumPy, Matplotlib) to support data processing aligned with standard FSL workflows.</p></li>
+<li><p>Integrated Python-based neuroimaging libraries (ANTs, NiBabel, NumPy, Matplotlib) to support data processing aligned with commonly used neuroimaging workflows.</p></li>
 <li><p>Enabled cross-platform support, allowing OPETIA to run on Windows, macOS, and Ubuntu.</p></li>
 <li><p>Unified the user experience by consolidating all tools into a single, consistent graphical user interface.</p></li>
 <li><p>Integrated MRIcroGL for advanced image visualization, including built-in DICOM-to-NIfTI conversion.</p></li>
